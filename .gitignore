@@ -1,0 +1,20 @@
+# data & outputs
+data/
+datasets_dl/
+checkpoints/
+lightning_logs/
+results/
+results fig/
+*.ckpt
+*.pth
+config_dump.json
+
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# tooling
+train_*.bat
+.idea/
+.vscode/

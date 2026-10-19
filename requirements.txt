@@ -1,0 +1,21 @@
+# Tested environment: Python 3.8, Windows x64, CUDA 11.7 (NVIDIA TITAN Xp)
+--extra-index-url https://download.pytorch.org/whl/cu117
+torch==1.13.1+cu117
+torchvision==0.14.1+cu117
+pytorch-lightning==1.9.5
+lightning-utilities==0.11.9
+fvcore==0.1.5.post20221221
+PyYAML==6.0.3
+numpy==1.24.4
+pillow==10.4.0
+six==1.17.0
+tensorboard==2.14.0
+tqdm==4.70.1
+
+# evaluation (FID / KID via torch-fidelity)
+torch-fidelity==0.4.0
+scipy==1.10.1
+
+# dataset preparation (HuggingFace parquet shards)
+pyarrow==17.0.0
+requests
