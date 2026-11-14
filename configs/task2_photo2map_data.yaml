@@ -1,0 +1,25 @@
+DATA:
+  TRAIN:
+    NAME: LocalDataset
+    LOADER: LocalLoaderTrain
+    BATCH_SIZE: 1
+    NUM_WORKERS: 0
+    DATA_DIR: F:/datasets/google maps/trainA   # aerial photos -> source
+  TRAIN_TARGET:
+    NAME: LocalDataset
+    LOADER: LocalLoaderTrain
+    BATCH_SIZE: 1
+    NUM_WORKERS: 0
+    DATA_DIR: F:/datasets/google maps/trainB   # google maps -> target
+  VAL_SOURCE:
+    NAME: LocalDataset
+    LOADER: LocalLoaderTest
+    BATCH_SIZE: 1
+    NUM_WORKERS: 0
+    DATA_DIR: F:/datasets/google maps/valB     # aerial photos (content!)
+  VAL_TARGET:
+    NAME: LocalDataset
+    LOADER: LocalLoaderTest
+    BATCH_SIZE: 1
+    NUM_WORKERS: 0
+    DATA_DIR: F:/datasets/google maps/valA     # google maps (content!)

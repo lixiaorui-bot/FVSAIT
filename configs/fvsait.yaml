@@ -1,0 +1,44 @@
+# FVSAIT full model (FHRR encoding + Lookahead optimization)
+TASK_MODEL:
+  NAME: FVSAIT
+  IN_CHANNELS: 3
+  OUT_CHANNELS: 3
+  RES_BLOCKS: 9
+  RES_CHANNELS: 64
+  DISCRIMINATOR_SCALES: 1
+  FEATURE_EXTRACTOR:
+    MODEL: vgg19
+    RETURN_NODES:
+      - features.2
+      - features.7
+      - features.12
+      - features.21
+      - features.30
+  LSH:
+    kernel_size: [16, 8, 4, 2, 1]
+    out_channels: 4096
+    stride: [16, 8, 4, 2, 1]
+  LOSSES: [vsa, adv, discr]
+  GAN_LOSS_FN: loss_hinge_gan      # hinge adversarial in hyper-vector space
+  VSA_LOSS_COEF: 10.0              # lambda_CYC = 10 (lambda_GAN = 1)
+  IMAGE_LOGGING_FREQ: 1000
+OPTIMIZERS:                        # paper: Adam beta=(0.5, 0.999), lr 4e-4 for G/R/D
+- BETAS: [0.5, 0.999]
+  LEARNING_RATE: 0.0004
+  NAME: Adam
+  NET_PREFIX: model.g_net
+  WEIGHT_DECAY: 0.0001
+- BETAS: [0.5, 0.999]
+  LEARNING_RATE: 0.0004
+  NAME: Adam
+  NET_PREFIX: model.d_net
+  WEIGHT_DECAY: 0.0001
+LOOKAHEAD:                         # paper: k=5, gamma=0.5
+  ENABLED: true
+  K: 5
+  GAMMA: 0.5
+SCHEDULER:                         # lr halved every 100k steps (kept from VSAIT)
+  GAMMA: 0.5
+  INTERVAL: step
+  NAME: StepLR
+  STEP_SIZE: 100000

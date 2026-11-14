@@ -1,0 +1,28 @@
+# Google Maps -> Aerial Photo (reverse direction of task2)
+# NOTE: in F:/datasets/google maps the val folders are content-swapped:
+#   trainA/valB = aerial photos (dark), trainB/valA = google maps (bright)
+DATA:
+  TRAIN:
+    NAME: LocalDataset
+    LOADER: LocalLoaderTrain
+    BATCH_SIZE: 1
+    NUM_WORKERS: 0
+    DATA_DIR: F:/datasets/google maps/trainB   # google maps -> source
+  TRAIN_TARGET:
+    NAME: LocalDataset
+    LOADER: LocalLoaderTrain
+    BATCH_SIZE: 1
+    NUM_WORKERS: 0
+    DATA_DIR: F:/datasets/google maps/trainA   # aerial photos -> target
+  VAL_SOURCE:
+    NAME: LocalDataset
+    LOADER: LocalLoaderTest
+    BATCH_SIZE: 1
+    NUM_WORKERS: 0
+    DATA_DIR: F:/datasets/google maps/valA     # google maps (content!)
+  VAL_TARGET:
+    NAME: LocalDataset
+    LOADER: LocalLoaderTest
+    BATCH_SIZE: 1
+    NUM_WORKERS: 0
+    DATA_DIR: F:/datasets/google maps/valB     # aerial photos (content!)

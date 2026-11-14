@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+checkpoints/
+lightning_logs/
+results/
+*.ckpt
+*.pth
+data/source/
+data/target/
+fault_traceback.log

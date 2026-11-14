@@ -1,0 +1,30 @@
+AUG:
+  TRAIN: &id001
+  - Resize:
+      size:
+      - 286
+      - 286
+  - RandomCrop:
+      size: 256
+  - RandomHorizontalFlip:
+      p: 0.5
+  - ToTensor
+  - &id002
+    Normalize:
+      mean:
+      - 0.5
+      - 0.5
+      - 0.5
+      std:
+      - 0.5
+      - 0.5
+      - 0.5
+  TRAIN_TARGET: *id001
+  VAL_SOURCE: &id003
+  - Resize:
+      size:
+      - 256
+      - 256
+  - ToTensor
+  - *id002
+  VAL_TARGET: *id003
