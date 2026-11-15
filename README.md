@@ -49,9 +49,3 @@ python test.py \
 | `configs/fvsait_mapb_lookahead.yaml` | MAP-B | Adam + Lookahead |
 | `configs/fvsait_fhrr_adam.yaml` | FHRR | Adam |
 | `configs/fvsait.yaml` | FHRR | Adam + Lookahead |
-
-## Validation
-
-```bash
-python validate.py
-```
